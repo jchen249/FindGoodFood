@@ -36,6 +36,7 @@ class SessionsController < ApplicationController
         end
       else
         if Authorization.exists?(auth_hash)
+            p auth_hash
             auth = Authorization.find_with_omniauth(auth_hash)
             message = "Welcome back #{auth.user.name}! " +
                       "You have logged in via #{auth.provider}."
