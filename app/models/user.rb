@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_many :ratings
     has_many :authorizations
     validates :name, :email, :presence => true
     
