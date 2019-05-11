@@ -1,3 +1,4 @@
 class Restaurant < ActiveRecord::Base
-    has_many :foods
+  belongs_to :user
+  has_many :foods
 end

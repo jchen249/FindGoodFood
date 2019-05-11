@@ -19,12 +19,16 @@ class RestaurantsController < ApplicationController
     
     def create
         @restaurant = Restaurant.create!(restaurant_params)
+        @restaurant.update_attributes(user_id: session[:user_id])
         flash[:notice] = "#{@restaurant.name} was successfully created."
         redirect_to restaurant_path(@restaurant)
     end
     
     def edit
         @restaurant = Restaurant.find params[:id]
+        if session[:user_id] != @restaurant.user.id
+            redirect_to restaurant_path(@restaurant) and return
+        end
     end
     
     def update
@@ -36,8 +40,11 @@ class RestaurantsController < ApplicationController
     
     def destroy
         @restaurant = Restaurant.find(params[:id])
+        if session[:user_id] != @restaurant.user.id
+            redirect_to restaurant_path(@restaurant) and return
+        end
         @restaurant.destroy
-        flash[:notice] = "Restaurant '#{@resturant.name}' deleted."
+        flash[:notice] = "Restaurant '#{@restaurant.name}' deleted."
         redirect_to restaurants_path
     end
 end

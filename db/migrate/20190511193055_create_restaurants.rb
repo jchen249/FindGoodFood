@@ -8,6 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.integer :average_price
       t.integer :average_rating
       t.string :tags
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

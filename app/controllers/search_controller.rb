@@ -6,7 +6,7 @@ class SearchController < ApplicationController
   
   def restaurant
       @restaurant_query = params[:search_bar] || session[:restaurant_query]
-      @restaurants = Restaurant.where("name LIKE ?", "%#{@restaurant_query}%")
+      @restaurants = Restaurant.where("name LIKE ? OR address LIKE ? OR tags LIKE ? OR description LIKE ?", "%#{@restaurant_query}%", "%#{@restaurant_query}%", "%#{@restaurant_query}%", "%#{@restaurant_query}%")
   end
   
 end
