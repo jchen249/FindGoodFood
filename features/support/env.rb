@@ -8,6 +8,7 @@ SimpleCov.start 'rails'
 
 require 'cucumber/rails'
 
+
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -57,3 +58,27 @@ ActionController::Base.allow_rescue = false
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://example.com'
+
+  OmniAuth.config.add_mock(:github, {
+    :uid => '49619285',
+    :info => {
+      :name => "My Tester",
+      :email => "MyTester@gmail.com"
+    }
+  })
+
+  OmniAuth.config.add_mock(:facebook, {
+    :uid => "2331287163614484",
+    :info => {
+      :name => "My Tester",
+      :email => "MyTester@gmail.com"
+    }
+  })
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
