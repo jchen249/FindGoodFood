@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :foods
   resources :restaurants
   resources :restaurants
   get 'dashboard/index'
