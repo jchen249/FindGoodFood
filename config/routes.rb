@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :restaurants
+  resources :restaurants
   get 'dashboard/index'
 
   get 'welcome/login', :as => :welcome_login

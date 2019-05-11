@@ -1,0 +1,19 @@
+-# edit.html.haml using partial
+
+%h2 Edit Existing Restaurant
+
+= form_tag restaurant_path(@restaurant), :method => :put do
+
+  = label :restaurant, :name, 'Name'
+  = text_field :name, 'name'
+  
+  = label :restaurant, :address, 'Address'
+  = text_field :address, 'address'
+  
+  = label :restaurant, :phone_number, 'Phone Number'
+  = text_field :phone_number, 'phone number'
+  
+  = label :restaurant, :description, 'Description'
+  = text_field :description, 'description'
+
+  = submit_tag 'Update Restaurant Info'

@@ -1,0 +1,19 @@
+-# in app/views/movies/show.html.haml
+
+%h3 Details about #{@restaurant.name}
+
+%ul#details
+  %li
+    Address:
+    = @restaurant.address
+  %li
+    Phone Number:
+    = @restaurant.phone_number
+
+%h4 Description:
+
+%p#description= @restaurant.description
+
+= link_to 'Edit', edit_restaurant_path(@restaurant)
+= button_to 'Delete', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to restaurant list', restaurants_path

@@ -1,5 +1,4 @@
-= "Restaurant Results for '#{@restaurant_query}'"
-%h1 Listing restaurant results
+%h1 Listing restaurants
 
 %table
   %thead
@@ -22,3 +21,5 @@
         %td= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
+
+= link_to 'New Restaurant', new_restaurant_path
