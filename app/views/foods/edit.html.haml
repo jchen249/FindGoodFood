@@ -1,7 +1,16 @@
-%h1 Editing food
+-# edit.html.haml using partial
 
-= render 'form'
+%h2 Edit Existing Food
 
-= link_to 'Show', @food
-\|
-= link_to 'Back', foods_path
+= form_tag food_path(@food), :method => :put do
+
+  = label :food, :name, 'Name'
+  = text_field :name, 'name'
+  
+  = label :food, :price, 'Price'
+  = text_field :price, 'price'
+  
+  = label :food, :tags, 'Tags'
+  = text_field :tags, 'tags'
+
+  = submit_tag 'Update Food Info'

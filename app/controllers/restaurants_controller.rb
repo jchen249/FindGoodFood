@@ -5,8 +5,9 @@ class RestaurantsController < ApplicationController
     end
     
     def show
-    id = params[:id]
-    @restaurant = Restaurant.find(id)
+        id = params[:id]
+        @restaurant = Restaurant.find(id)
+        @foods = Food.where(restaurant_id: id)
     end
     
     def index

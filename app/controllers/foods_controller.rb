@@ -1,5 +1,9 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
+  
+  def food_params
+        params.require(:food).permit(:name, :price, :tags)
+    end
 
   # GET /foods
   # GET /foods.json
@@ -12,63 +16,48 @@ class FoodsController < ApplicationController
   def show
   end
 
-  # GET /foods/new
   def new
-    @food = Food.new
+      # default: render 'new' template
+      restaurant = Restaurant.find(params[:restaurant_id])
+      if session[:user_id] != restaurant.user.id
+          redirect_to restaurant_path(restaurant) and return
+      end
+      @restaurant_id = params[:restaurant_id]
+      puts params
   end
-
-  # GET /foods/1/edit
-  def edit
-  end
-
-  # POST /foods
-  # POST /foods.json
+  
   def create
-    @food = Food.new(food_params)
-
-    respond_to do |format|
-      if @food.save
-        format.html { redirect_to @food, notice: 'Food was successfully created.' }
-        format.json { render :show, status: :created, location: @food }
-      else
-        format.html { render :new }
-        format.json { render json: @food.errors, status: :unprocessable_entity }
-      end
-    end
+      @food = Food.create!(food_params)
+      # puts params
+      # puts "aaaaaaa"
+      # puts params[:restaurant_id].keys[0]
+      @food.update_attributes(restaurant_id: params[:restaurant_id].keys[0].to_i)
+      flash[:notice] = "#{@food.name} was successfully created."
+      # restaurant = Restaurant.find(@food.restaurant_id)
+      redirect_to restaurant_path(@food.restaurant) and return
   end
-
-  # PATCH/PUT /foods/1
-  # PATCH/PUT /foods/1.json
+  
+  def edit
+      @food = Food.find params[:id]
+      if session[:user_id] != @food.user.id
+          redirect_to food_path(@food) and return
+      end
+  end
+  
   def update
-    respond_to do |format|
-      if @food.update(food_params)
-        format.html { redirect_to @food, notice: 'Food was successfully updated.' }
-        format.json { render :show, status: :ok, location: @food }
-      else
-        format.html { render :edit }
-        format.json { render json: @food.errors, status: :unprocessable_entity }
-      end
-    end
+      @food = Food.find params[:id]
+      @food.update_attributes!(food_params)
+      flash[:notice] = "#{@food.name} was successfully updated."
+      redirect_to food_path(@food)
   end
-
-  # DELETE /foods/1
-  # DELETE /foods/1.json
+  
   def destroy
-    @food.destroy
-    respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_food
       @food = Food.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def food_params
-      params.fetch(:food, {})
-    end
+      if session[:user_id] != @food.user.id
+          redirect_to food_path(@food) and return
+      end
+      @food.destroy
+      flash[:notice] = "Food '#{@food.name}' deleted."
+      redirect_to foods_path
+  end
 end

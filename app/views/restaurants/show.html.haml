@@ -21,3 +21,25 @@
 = link_to 'Edit', edit_restaurant_path(@restaurant)
 = button_to 'Delete', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure?'
 = link_to 'Back to restaurant list', restaurants_path
+
+%h1 Listing Foods
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Rating
+      %th Price
+      %th Tags
+
+  %tbody
+    - @foods.each do |food|
+      %tr
+        %td= food.name
+        %td= food.rating
+        %td= food.price
+        %td= food.tags
+
+%br
+
+= button_to "Add New Food", new_food_path, method: :get, params: { restaurant_id: @restaurant.id }
