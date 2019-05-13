@@ -10,6 +10,15 @@ class FoodsController < ApplicationController
   def index
     @foods = Food.all
   end
+  
+  def rate
+    @food = Food.find(params[:id])
+    @restaurant = Restaurant.find(@food.restaurant_id)
+    if session[:user_id] == @restaurant.user_id
+      redirect_to restaurant_path(@restaurant) and return
+    end
+    
+  end
 
   # GET /foods/1
   # GET /foods/1.json
@@ -31,7 +40,7 @@ class FoodsController < ApplicationController
       # puts params
       # puts "aaaaaaa"
       # puts params[:restaurant_id].keys[0]
-      @food.update_attributes(restaurant_id: params[:restaurant_id].keys[0].to_i)
+      @food.update_attributes(restaurant_id: params[:restaurant_id].keys[0].to_i, rating: 0, number_of_ratings: 0)
       flash[:notice] = "#{@food.name} was successfully created."
       # restaurant = Restaurant.find(@food.restaurant_id)
       redirect_to restaurant_path(@food.restaurant) and return

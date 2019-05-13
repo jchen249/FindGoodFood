@@ -31,6 +31,8 @@
       %th Rating
       %th Price
       %th Tags
+      %th
+      %th
 
   %tbody
     - @foods.each do |food|
@@ -39,6 +41,8 @@
         %td= food.rating
         %td= food.price
         %td= food.tags
+        %th= link_to 'Edit', edit_food_path(food)
+        %th= button_to 'Rate', rate_food_path(food), method: :get, params: { restaurant_id: @restaurant.id, food_id: food.id }
 
 %br
 
