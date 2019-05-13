@@ -5,15 +5,15 @@
 = form_tag restaurant_path(@restaurant), :method => :put do
 
   = label :restaurant, :name, 'Name'
-  = text_field :name, 'name'
+  = text_field :restaurant, 'name'
   
   = label :restaurant, :address, 'Address'
-  = text_field :address, 'address'
+  = text_field :restaurant, 'address'
   
   = label :restaurant, :phone_number, 'Phone Number'
-  = text_field :phone_number, 'phone number'
+  = text_field :restaurant, 'phone_number'
   
   = label :restaurant, :description, 'Description'
-  = text_field :description, 'description'
+  = text_field :restaurant, 'description'
 
   = submit_tag 'Update Restaurant Info'
