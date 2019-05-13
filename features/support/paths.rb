@@ -13,6 +13,7 @@ module NavigationHelpers
     when /^the restaurant results page$/ then '/results/restaurant'
     when /^the food results page$/ then '/results/food'
     when /^the login page$/ then '/welcome/login'
+    when /^the restaurant listings page$/ then '/restaurants'
 
     else
       begin

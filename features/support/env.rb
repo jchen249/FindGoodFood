@@ -85,8 +85,8 @@ Before('@omniauth_test') do
   OmniAuth.config.add_mock(:facebook, {
     :uid => "2331287163614484",
     :info => {
-      :name => "My Tester",
-      :email => "MyTester@gmail.com"
+      :name => "My Tester 2",
+      :email => "MyTester2@gmail.com"
     }
   })
 end
