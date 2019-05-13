@@ -1,12 +1,12 @@
-%h1 Listing restaurants
+%h1 Restaurant Listings
 
 %table
   %thead
     %tr
-      %th
-      %th
-      %th
-      %th
+      %th Name
+      %th Address
+      %th Phone Number
+      %th Description
 
   %tbody
     - @restaurants.each do |restaurant|
@@ -16,7 +16,7 @@
         %td= restaurant.phone_number
         %td= restaurant.description
       %tr
-        %td= link_to 'Show', restaurant
+        %td= link_to "More info for #{restaurant.name}", restaurant_path(restaurant)
 
 %br
 
