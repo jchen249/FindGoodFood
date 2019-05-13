@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190511204847) do
+ActiveRecord::Schema.define(version: 20190513160609) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -40,7 +40,12 @@ ActiveRecord::Schema.define(version: 20190511204847) do
     t.integer  "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "food_id"
   end
+
+  add_index "ratings", ["food_id"], name: "index_ratings_on_food_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
