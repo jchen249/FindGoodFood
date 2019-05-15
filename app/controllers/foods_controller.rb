@@ -15,6 +15,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @restaurant = Restaurant.find(@food.restaurant_id)
     if session[:user_id] == @restaurant.user_id
+      flash[:notice] = "You cannot rate your own food, sorry."
       redirect_to restaurant_path(@restaurant) and return
     end
     
