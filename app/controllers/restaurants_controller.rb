@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
     
     def edit
         @restaurant = Restaurant.find params[:id]
-        if session[:user_id] != @restaurant.user.id
+        if session[:user_id] != @restaurant.user_id
             flash[:notice] = "You do not have permission to modify #{@restaurant.name}"
             redirect_to restaurant_path(@restaurant) and return
         end
@@ -42,7 +42,7 @@ class RestaurantsController < ApplicationController
     
     def destroy
         @restaurant = Restaurant.find(params[:id])
-        if session[:user_id] != @restaurant.user.id
+        if session[:user_id] != @restaurant.user_id
             flash[:notice] = "You do not have permission to delete #{@restaurant.name}"
             redirect_to restaurant_path(@restaurant) and return
         end
