@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/foods/new', :to => 'foods#new', :as => :new_food
   post '/foods', :to => 'foods#create', :as => :create_food
   put '/foods/:id', :to => 'foods#update', :as => :update_food
+  delete '/foods/:id', :to => 'foods#destroy', :as => :delete_food
   
   # get '/home', :to => 'homepage#home', :as => :home
   # root 'welcome#login'
