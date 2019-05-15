@@ -2,7 +2,9 @@
 
 %h2 Edit Existing Food
 
-= form_tag food_path(@food), :method => :put do
+= link_to 'Back to restaurant page', restaurant_path(@food.restaurant_id)
+
+= form_tag update_food_path(@food), :method => :put do
 
   = label :food, :name, 'Name'
   = text_field :name, 'name'

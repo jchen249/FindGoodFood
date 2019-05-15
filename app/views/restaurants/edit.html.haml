@@ -2,6 +2,8 @@
 
 %h2 Edit Existing Restaurant
 
+= link_to 'Back to restaurant page', restaurant_path(@restaurant)
+
 = form_tag restaurant_path(@restaurant), :method => :put do
 
   = label :restaurant, :name, 'Name'

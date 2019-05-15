@@ -1,6 +1,8 @@
 %h2 Create New Food
 
-= form_tag foods_path do
+= link_to 'Back to restaurant page', restaurant_path(@restaurant_id)
+
+= form_tag create_food_path do
 
   = label :food, :name, 'Name'
   = text_field :food, 'name'
