@@ -33,7 +33,6 @@ class FoodsController < ApplicationController
           redirect_to restaurant_path(restaurant) and return
       end
       @restaurant_id = params[:restaurant_id]
-      puts params
   end
   
   def create
@@ -65,17 +64,19 @@ class FoodsController < ApplicationController
       @food = Food.find params[:id]
       @food.update_attributes!(food_params)
       flash[:notice] = "#{@food.name} was successfully updated."
-      redirect_to food_path(@food)
+      redirect_to restaurant_path(@food.restaurant)
   end
   
   def destroy
       @food = Food.find(params[:id])
       restaurant = Restaurant.find(@food.restaurant_id)
       if session[:user_id] != restaurant.user_id
-          redirect_to food_path(@food) and return
+        flash[:notice] = "You do not have permission to delete '#{@food.name}'"
+        redirect_to restaurant_path(restaurant) and return
       end
+      name = @food.name
       @food.destroy
-      flash[:notice] = "Food '#{@food.name}' deleted."
-      redirect_to foods_path
+      flash[:notice] = "Food '#{name}' deleted."
+      redirect_to restaurant_path(restaurant) and return
   end
 end
