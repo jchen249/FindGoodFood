@@ -28,7 +28,7 @@ Scenario: Modify an existing restaurant
   And I am on the restaurant listings page
   Then I should see "Lost Dog Cafe"
   When I follow "More info for Lost Dog Cafe"
-  And I follow "Edit"
+  And I follow "Edit Restaurant"
   And I fill in "Name" with "Nirchi's"
   And I fill in "Address" with "222 Water Street, Binghamton, NY 13901"
   And I fill in "Phone Number" with "607-771-6063"
@@ -45,7 +45,7 @@ Scenario: Delete an existing restaurant
   And I am on the restaurant listings page
   Then I should see "Lost Dog Cafe"
   When I follow "More info for Lost Dog Cafe"
-  When I press "Delete"
+  When I press "Delete Restaurant"
   Then I should see "Restaurant 'Lost Dog Cafe' deleted."
   And I should not see "Serves lunch, dinner, coffee and drinks"
 
@@ -59,8 +59,8 @@ Scenario: Attempt to modify a restaurant without authorization
   And I am on the restaurant listings page
   Then I should see "Lost Dog Cafe"
   When I follow "More info for Lost Dog Cafe"
-  And I follow "Edit"
-  Then I should see "You do not have permission to modify Lost Dog Cafe"
+  And I follow "Edit Restaurant"
+  Then I should see "You do not have permission to modify 'Lost Dog Cafe'"
 
 Scenario: Attempt to delete a restaurant without authorization
   Given the following restaurants exist:
@@ -72,5 +72,5 @@ Scenario: Attempt to delete a restaurant without authorization
   And I am on the restaurant listings page
   Then I should see "Lost Dog Cafe"
   When I follow "More info for Lost Dog Cafe"
-  And I press "Delete"
-  Then I should see "You do not have permission to delete Lost Dog Cafe"
+  And I press "Delete Restaurant"
+  Then I should see "You do not have permission to delete 'Lost Dog Cafe'"
