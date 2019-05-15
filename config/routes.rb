@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :foods
+  # resources :foods
   resources :restaurants
   get 'dashboard/index'
 
@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :users
   
   get '/foods/:id/rate', :to => 'foods#rate', :as => :rate_food
+  get '/foods/:id/edit', :to => 'foods#edit', :as => :edit_food
+  get '/foods/new', :to => 'foods#new', :as => :new_food
+  post '/foods', :to => 'foods#create', :as => :create_food
+  put '/foods/:id', :to => 'foods#update', :as => :update_food
   
   # get '/home', :to => 'homepage#home', :as => :home
   # root 'welcome#login'
