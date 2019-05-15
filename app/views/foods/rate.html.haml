@@ -4,7 +4,7 @@
 
 = form_tag rate_path do
 
-  = label :rating, :score, 'Rating'
+  = label :rating, :score, 'Score'
   = select :rating, :score, [1, 2, 3, 4, 5]
 
   = submit_tag 'Submit Rating', :name => "food_id[#{@food.id}]"
