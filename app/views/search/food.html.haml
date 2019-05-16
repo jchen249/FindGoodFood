@@ -1,1 +1,24 @@
 = "Food Results for '#{@food_query}'"
+%h1 Listing food results
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Restaurant
+      %th Rating
+      %th Price
+      %th tags
+
+  %tbody
+    - @foods.each do |food|
+      %tr
+        %td= food.name
+        %td= food.restaurant.name
+        %td= food.rating
+        %td= food.price
+        %td= food.tags
+      %tr
+        %td= link_to 'More Restaurant Info', restaurant_path(food.restaurant_id)
+
+%br
