@@ -7,6 +7,7 @@
       %th Address
       %th Phone Number
       %th Description
+      %th More Info
 
   %tbody
     - @restaurants.each do |restaurant|
@@ -15,8 +16,8 @@
         %td= restaurant.address
         %td= restaurant.phone_number
         %td= restaurant.description
-      %tr
         %td= link_to "More info for #{restaurant.name}", restaurant_path(restaurant)
+      %tr
 
 %br
 
