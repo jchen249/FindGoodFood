@@ -1,0 +1,5 @@
+How do we set up the project?
+1. We clone or download the project repository from github into cloud9 IDE.
+2. Once done, we run bundle install on to check with all dependencies.
+3. On successful completion, we type the command "rails server -b $IP -p $PORT" to start our web app server.
+This gets our project running on the server.
