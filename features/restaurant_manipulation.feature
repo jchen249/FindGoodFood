@@ -18,7 +18,7 @@ Scenario: Create a new restaurant
   And I fill in "Description" with "Serves lunch, dinner, coffee and drinks"
   And I press "Save Changes"
   Then I should see "Lost Dog Cafe was successfully created."
-  And I should see "Details about Lost Dog Cafe"
+  And I should see "222 Water Street"
 
 Scenario: Modify an existing restaurant
   Given the following restaurants exist:

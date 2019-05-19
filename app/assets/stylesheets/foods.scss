@@ -1,3 +1,18 @@
 // Place all the styles related to the Foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-spacing: 20px 0;
+  white-space: nowrap;
+  text-align: center;
+}
+td, th {
+  border: 1px solid;
+}
+tr { 
+  border: solid;
+  border-width: 1px 0;
+}
