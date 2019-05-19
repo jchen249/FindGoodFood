@@ -1,0 +1,10 @@
+%h2= "Rate the '#{@food.name}' from '#{@restaurant.name}'"
+
+= link_to 'Back to restaurant page', restaurant_path(@food.restaurant_id)
+
+= form_tag rate_path do
+
+  = label :rating, :score, 'Score'
+  = select :rating, :score, [1, 2, 3, 4, 5]
+
+  = submit_tag 'Submit Rating', :name => "food_id[#{@food.id}]"

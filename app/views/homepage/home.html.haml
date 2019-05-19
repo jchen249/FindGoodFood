@@ -4,6 +4,18 @@
     .header
       %h2 FindGoodFood
       %p The perfect place for hoggers.
+      .wrapper
+    //%header I'm a 30px tall header
+    //%main I'm the main-content filling the void!
+    /*bottom line message-footer 05/15*/
+    //TO-DO reposition this when free
+    .logo
+    //%img{:src => "/images/findgoodfoodicon.png", :height => "40", :width => "60"}/ 
+    // =image_tag "findgoodfoodicon.png"
+    //above line to add image as logo
+    .body
+    // =image_tag "stephaniebough_food18.jpg"
+    //above line to add image as background 
     .search-container
       %form{:action => "search", :method => 'get', :id => 'homeForm'}
         %input{:name => "search_bar", :required => true, :placeholder => "Find Good Food", :type => "text", :value => ""}/
@@ -13,4 +25,5 @@
       %input{:type => "submit", :value => "Submit", :form => 'homeForm'}/
        
         
-        
+  = button_to "View all Restaurants", '/restaurants', method: :get
+  %footer Enjoy your meal!!

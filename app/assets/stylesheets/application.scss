@@ -24,6 +24,8 @@ start block*/
         font-family: Arial;
         padding: 10px;
         /*background: #f1f1f1;*/
+        /*background-color: lightblue;*/  /*If not background image then we can add background color...this got added to the login page*/
+        background-image: url(/app/assets/images/stephaniebough_food18.jpg);  /*for background image*/
       }
       
       /* Header/Blog Title */
@@ -40,10 +42,19 @@ start block*/
       }
       
       .header p {
+        margin-top: 80px;
         font-size: 20px;
         font-family: Arial;
       }
-      
+  
+  
+    /*for logo */
+    .logo { 
+      width: 20px; 
+      height: 20px; 
+      background-image: url(image-path("findgoodfoodicon.png")); /*add the path of image that's our logo*/ 
+    }
+
       form {
         width: 100%;
         margin: 0 auto;
@@ -121,7 +132,26 @@ start block*/
         background: #ddd;
         margin-top: 20px;
       }
+      .persistentButton{
+        display: inline-block;
+        width: 20%;
+      }
       
+      .persistentButton a {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .persistentButton a:hover{
+        background: rgba(0,0,0,0);
+      }
+      
+      
+      
+      .homePageButton:hover {
+         background-color: lightskyblue !important; 
+      }
+
       /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
       /*@media screen and (max-width: 800px) {
         .leftcolumn, .rightcolumn {   

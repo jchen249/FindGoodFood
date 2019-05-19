@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
+    has_many :ratings
     has_many :authorizations
+    has_many :restaurants
     validates :name, :email, :presence => true
     
     def self.create_with_omniauth info

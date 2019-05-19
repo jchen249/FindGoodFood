@@ -1,0 +1,24 @@
+%h1 All Restaurant Listings
+
+%table
+  %thead
+    %tr
+      %th{:style => "width: 20%"} Name
+      %th{:style => "width: 25%"} Address
+      %th{:style => "width: 10%"} Phone Number
+      %th{:style => "width: 25%"} Description
+      %th{:style => "width: 20%"} More Info
+
+  %tbody
+    - @restaurants.each do |restaurant|
+      %tr
+        %td= restaurant.name
+        %td= restaurant.address
+        %td= restaurant.phone_number
+        %td= restaurant.description
+        %td= link_to "More info for #{restaurant.name}", restaurant_path(restaurant)
+      %tr
+
+%br
+
+= link_to 'Add New Restaurant', new_restaurant_path
