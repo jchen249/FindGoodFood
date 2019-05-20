@@ -1,10 +1,26 @@
-!!!
+!!! 
 %html
   %head
+    %link{:href => "https://fonts.googleapis.com/css?family=Pacifico", :rel => "stylesheet"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FindGoodFood
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    - if flash[:error]
+      #error.message= flash[:error]
+    - elsif flash[:notice]
+      #notice.message= flash[:notice]
+    - elsif flash[:warning]
+      #warning.message= flash[:warning]
+  
+    - unless @action == 'login'
+      - if @action == 'home'
+        = render "layouts/homepageProfile"
+      - else
+        = render "layouts/persistentSearchBar"
+
     = yield
+    // - unless @action == 'login'
+    //   = render "layouts/footer"

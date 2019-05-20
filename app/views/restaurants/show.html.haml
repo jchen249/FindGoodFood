@@ -1,0 +1,51 @@
+-# in app/views/movies/show.html.haml
+
+%h2 #{@restaurant.name}
+
+// Restaurant Owner:
+// = @restaurant.user
+// = @restaurant.user.name
+
+%ul#details
+  %li
+    Address:
+    = @restaurant.address
+  %li
+    Phone Number:
+    = @restaurant.phone_number
+
+%h4 Description:
+
+%p#description= @restaurant.description
+
+= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant)
+= button_to 'Delete Restaurant', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to restaurant list', restaurants_path
+
+%h1 Menu
+
+%table
+  %thead
+    %tr
+      %th{:style => "width: 20%"} Name
+      %th{:style => "width: 8%"} Rating
+      %th{:style => "width: 8%"} Price
+      %th{:style => "width: 24%"} Tags
+      %th{:style => "width: 10%"}
+      %th{:style => "width: 10%"}
+      %th{:style => "width: 10%"}
+
+  %tbody
+    - @foods.each do |food|
+      %tr
+        %td= food.name
+        %td= "#{food.rating}/5.0"
+        %td= "$#{food.price}.00"
+        %td= food.tags
+        %th= button_to 'Rate Food', rate_food_path(food), method: :get, params: { restaurant_id: @restaurant.id, food_id: food.id }
+        %th= link_to 'Edit Food', edit_food_path(food)
+        %th= button_to 'Delete Food', delete_food_path(food), :method => :delete, :confirm => 'Are you sure?'
+
+%br
+
+= button_to "Add New Food", new_food_path, method: :get, params: { restaurant_id: @restaurant.id }

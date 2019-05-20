@@ -1,3 +1,4 @@
+@omniauth_test
 Feature: test functionality of the search bar on the homepage
  
     As a user
@@ -5,8 +6,9 @@ Feature: test functionality of the search bar on the homepage
     I want to be able to search for food
 
 Background:
-
-  Given I am on the FindGoodFood home page
+  Given I am on the login page
+  And I am signed in with provider "GitHub"
+  And I am on the FindGoodFood home page
   
 Scenario: Search by Restaurant
   When I fill in "search_bar" with "Nirchi's"
